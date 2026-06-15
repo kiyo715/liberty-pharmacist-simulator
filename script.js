@@ -266,7 +266,7 @@ function updateXShareUrl(emp, mid, diff, statusKey, annHours) {
       `薬剤師の適正年収シミュレーターやってみた💊\n` +
       `→ 私の適正年収は${yen.format(annMid)}万円でした！\n` +
       `（現在との差 ${sign}${yen.format(diffMan)}万円）${emoji}\n\n` +
-      `#薬剤師 #薬剤師転職 #薬剤師の給与\n` +
+      `#リバティ薬剤師 #薬剤師転職 #薬剤師の給与\n` +
       SIM_URL;
   } else {
     const midR = roundTo50(mid);
@@ -276,7 +276,7 @@ function updateXShareUrl(emp, mid, diff, statusKey, annHours) {
       `薬剤師の適正時給シミュレーターやってみた💊\n` +
       `→ 私の適正時給は${yen.format(midR)}円でした！\n` +
       `（今より${sign}${yen.format(roundTo50(diff))}円）${emoji}\n\n` +
-      `#薬剤師 #薬剤師パート #薬剤師の給与\n` +
+      `#リバティ薬剤師 #薬剤師転職 #薬剤師の給与\n` +
       SIM_URL;
   }
 
