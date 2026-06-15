@@ -516,24 +516,54 @@ function resetForm() {
   fields.leadership.checked = false;
   prevEmployment = "part";
   updateMode(false);
-  calculate();
+  // リセット時は結果を非表示に戻す
+  const card = document.getElementById("resultCard");
+  card.classList.add("result-card--hidden");
+  card.classList.remove("result-card--visible");
 }
 
 /* ══════════════════════════════════════════
    Events
 ══════════════════════════════════════════ */
-form.addEventListener("input", calculate);
 
+// 雇用形態変更時はフォームの表示モードだけ切り替え（計算はしない）
 form.addEventListener("change", e => {
   if (e.target === fields.employment && fields.employment.value !== prevEmployment) {
     updateMode(true);
     prevEmployment = fields.employment.value;
   }
+});
+
+// チェックボタン
+document.getElementById("checkBtn").addEventListener("click", () => {
   calculate();
+  const card = document.getElementById("resultCard");
+  card.classList.remove("result-card--hidden");
+  card.classList.remove("result-card--visible");
+  // reflow して animation を再発火
+  void card.offsetWidth;
+  card.classList.add("result-card--visible");
+  // スクロール（スマホ対応）
+  card.scrollIntoView({ behavior: "smooth", block: "start" });
+});
+
+// シェアボタン
+document.getElementById("shareBtn").addEventListener("click", () => {
+  const url  = "https://kiyo715.github.io/liberty-pharmacist-simulator/";
+  const text = "薬剤師の適正給料を無料でチェックできます！";
+  if (navigator.share) {
+    navigator.share({ title: "リバティ薬剤師 適正給料シミュレーター", text, url });
+  } else {
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.getElementById("shareBtn");
+      const orig = btn.innerHTML;
+      btn.textContent = "URLをコピーしました ✓";
+      setTimeout(() => { btn.innerHTML = orig; }, 2000);
+    });
+  }
 });
 
 document.querySelector("#resetBtn").addEventListener("click", resetForm);
 
 /* ── Init ── */
 updateMode(false);
-calculate();
