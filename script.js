@@ -241,8 +241,46 @@ function calculate() {
 
   renderBreakdown(factors, mid);
 
+  // X シェアURL を動的生成
+  updateXShareUrl(emp, mid, diff, status.key, annHours);
+
   // 匿名データ送信（4秒デバウンス）
   scheduleDataSend(emp, area, workplace, experience, shift, wkHours, mid, status.key);
+}
+
+/* ── X シェアURL 生成 ── */
+function updateXShareUrl(emp, mid, diff, statusKey, annHours) {
+  const btn = document.getElementById("xShareBtn");
+  if (!btn) return;
+
+  const SIM_URL = "https://kiyo715.github.io/liberty-pharmacist-simulator/";
+  let tweetText;
+
+  if (emp === "regular") {
+    const annMid  = Math.round(mid * annHours / 10000);
+    const entered = Number(fields.currentWage.value) || 0;
+    const diffMan = entered - annMid;
+    const sign    = diffMan >= 0 ? "+" : "";
+    const emoji   = statusKey === "low" ? "😳" : statusKey === "high" ? "😊" : "✅";
+    tweetText =
+      `薬剤師の適正年収シミュレーターやってみた💊\n` +
+      `→ 私の適正年収は${yen.format(annMid)}万円でした！\n` +
+      `（現在との差 ${sign}${yen.format(diffMan)}万円）${emoji}\n\n` +
+      `#薬剤師 #薬剤師転職 #薬剤師の給与\n` +
+      SIM_URL;
+  } else {
+    const midR = roundTo50(mid);
+    const sign  = diff >= 0 ? "+" : "";
+    const emoji = statusKey === "low" ? "😳" : statusKey === "high" ? "😊" : "✅";
+    tweetText =
+      `薬剤師の適正時給シミュレーターやってみた💊\n` +
+      `→ 私の適正時給は${yen.format(midR)}円でした！\n` +
+      `（今より${sign}${yen.format(roundTo50(diff))}円）${emoji}\n\n` +
+      `#薬剤師 #薬剤師パート #薬剤師の給与\n` +
+      SIM_URL;
+  }
+
+  btn.href = `https://x.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
 }
 
 /* ── 匿名データ収集 ── */
