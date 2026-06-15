@@ -577,10 +577,9 @@ document.getElementById("checkBtn").addEventListener("click", () => {
   calculate();
   const card = document.getElementById("resultCard");
   card.classList.remove("result-card--hidden");
-  card.classList.remove("result-card--visible");
-  // reflow して animation を再発火
+  card.classList.remove("result-card--anim");
   void card.offsetWidth;
-  card.classList.add("result-card--visible");
+  card.classList.add("result-card--anim");
   // スクロール（スマホ対応）
   card.scrollIntoView({ behavior: "smooth", block: "start" });
 });
