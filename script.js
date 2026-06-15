@@ -83,16 +83,18 @@ const MOD = {
     hospital:    -120    // 病院直営: 安定・福利分低め（年収542万、差-54万）
   },
   experience: {
-    year1to4:   -150,   // 1〜4年目
-    year5to10:   +80,   // 5〜10年目: 即戦力評価
-    year10plus: +180    // 11年目以降: 熟練・専門性
+    year1to2:  -200,   // 1〜2年目
+    year3to4:  -100,   // 3〜4年目
+    year5to6:   +50,   // 5〜6年目: 即戦力評価
+    year7to8:  +100,   // 7〜8年目
+    year9to10: +150,   // 9〜10年目
+    year11plus:+200    // 11年目以降: 熟練・専門性
   },
   shift: {
-    weekday:   0,     // 平日昼: 基準
-    evening: +130,    // 夕方以降: 需要高い枠
-    weekend: +180,    // 土日祝: 需要高い枠
-    flexible:+320,    // 夜間・土日両対応
-    fullDay:   0      // 正社員1日: シフト割増なし
+    weekday_part:  +30,  // 平日パート（昼・夕方）: 基準
+    weekend:      +180,  // 土日祝: 需要高い枠
+    flexible:     +320,  // 夜間・土日両対応
+    fullDay:         0   // 正社員1日: シフト割増なし
   }
 };
 
@@ -119,11 +121,10 @@ const LABELS = {
     hospital:     "病院・クリニック直営"
   },
   shift: {
-    weekday:  "平日昼中心",
-    evening:  "夕方以降あり",
-    weekend:  "土日祝あり",
-    flexible: "夜間・土日対応可",
-    fullDay:  "1日勤務"
+    weekday_part: "平日パート（昼・夕方）",
+    weekend:      "土日祝あり",
+    flexible:     "夜間・土日対応可",
+    fullDay:      "1日勤務"
   }
 };
 
@@ -507,8 +508,8 @@ function resetForm() {
   fields.employment.value   = "part";
   fields.area.value         = "metro";
   fields.workplace.value    = "pharmacy";
-  fields.experience.value   = "year5to10";
-  fields.shift.value        = "weekday";
+  fields.experience.value   = "year5to6";
+  fields.shift.value        = "weekday_part";
   fields.weeklyHours.value  = 24;
   fields.solo.checked       = false;
   fields.homecare.checked   = false;

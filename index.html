@@ -41,15 +41,6 @@
           </h2>
           <div class="form-grid">
             <label class="field">
-              <span class="field-label" id="payLabel">現在の時給</span>
-              <div class="num-input">
-                <input id="currentWage" type="number" min="1000" max="6000" step="50" value="2200" autocomplete="off" aria-describedby="payHelp">
-                <b id="payUnit" aria-hidden="true">円</b>
-              </div>
-              <small class="field-note" id="payHelp">パート・派遣は現在の時給を入力</small>
-            </label>
-
-            <label class="field">
               <span class="field-label">雇用形態</span>
               <div class="sel-wrap">
                 <select id="employment">
@@ -59,6 +50,15 @@
                 </select>
                 <svg class="sel-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
               </div>
+            </label>
+
+            <label class="field">
+              <span class="field-label" id="payLabel">現在の時給</span>
+              <div class="num-input">
+                <input id="currentWage" type="number" min="1000" max="6000" step="50" value="2200" autocomplete="off" aria-describedby="payHelp">
+                <b id="payUnit" aria-hidden="true">円</b>
+              </div>
+              <small class="field-note" id="payHelp">パート・派遣は現在の時給を入力</small>
             </label>
           </div>
         </div>
@@ -101,9 +101,12 @@
               <span class="field-label">薬剤師経験</span>
               <div class="sel-wrap">
                 <select id="experience">
-                  <option value="year1to4">1〜4年目</option>
-                  <option value="year5to10" selected>5〜10年目</option>
-                  <option value="year10plus">11年目以降</option>
+                  <option value="year1to2">1〜2年目</option>
+                  <option value="year3to4">3〜4年目</option>
+                  <option value="year5to6" selected>5〜6年目</option>
+                  <option value="year7to8">7〜8年目</option>
+                  <option value="year9to10">9〜10年目</option>
+                  <option value="year11plus">11年目以降</option>
                 </select>
                 <svg class="sel-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
               </div>
@@ -113,8 +116,7 @@
               <span class="field-label">勤務時間帯</span>
               <div class="sel-wrap">
                 <select id="shift">
-                  <option value="weekday">平日昼中心</option>
-                  <option value="evening">夕方以降あり</option>
+                  <option value="weekday_part">平日パート（昼・夕方）</option>
                   <option value="weekend">土日祝あり</option>
                   <option value="flexible">夜間・土日どちらも可</option>
                   <option value="fullDay">正社員・1日勤務</option>
