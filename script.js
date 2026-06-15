@@ -142,13 +142,13 @@ function calculate() {
   const wkHours = Number(fields.weeklyHours.value) || 0;
   const current = toHourly(emp, wkHours);
 
-  /* Build factor list */
+  /* Build factor list — || 0 でNaN防止 */
   const factors = [
-    { label: `雇用形態（${LABELS.employment[emp]}）`,                             val: BASE[emp],        isBase: true },
-    { label: `地域（${LABELS.area[area]}）`,                                      val: MOD.area[area] },
-    { label: `業態（${LABELS.workplace[work]}）`,                                 val: MOD.workplace[work] },
-    { label: `経験（${fields.experience.options[fields.experience.selectedIndex].text}）`, val: MOD.experience[exp] },
-    { label: `シフト（${LABELS.shift[shift]}）`,                                  val: MOD.shift[shift] }
+    { label: `雇用形態（${LABELS.employment[emp] ?? emp}）`,                             val: BASE[emp] || 0,              isBase: true },
+    { label: `地域（${LABELS.area[area] ?? area}）`,                                     val: MOD.area[area] ?? 0 },
+    { label: `業態（${LABELS.workplace[work] ?? work}）`,                                val: MOD.workplace[work] ?? 0 },
+    { label: `経験（${fields.experience.options[fields.experience.selectedIndex].text}）`, val: MOD.experience[exp] ?? 0 },
+    { label: `シフト（${LABELS.shift[shift] ?? shift}）`,                                val: MOD.shift[shift] ?? 0 }
   ];
 
   if (fields.solo.checked)       factors.push({ label: "一人薬剤師対応",     val: CAP_MOD.solo });
