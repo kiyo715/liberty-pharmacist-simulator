@@ -532,7 +532,7 @@ function updateMode(resetPay = false) {
     fields.weeklyHours.value = 40;
     if (resetPay) fields.currentWage.value = 500;
   } else if (resetPay) {
-    fields.shift.value       = "weekday";
+    fields.shift.value       = "weekday_part";
     fields.weeklyHours.value = 24;
     fields.currentWage.value = emp === "temp" ? 2900 : 2200;
   }
