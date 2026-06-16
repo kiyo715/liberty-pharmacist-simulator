@@ -245,7 +245,7 @@ function calculate() {
   updateXShareUrl(emp, mid, diff, status.key, annHours);
 
   // 匿名データ送信（4秒デバウンス）
-  scheduleDataSend(emp, area, workplace, experience, shift, wkHours, mid, status.key);
+  scheduleDataSend(emp, area, work, exp, shift, wkHours, mid, status.key);
 }
 
 /* ── X シェアURL 生成 ── */
