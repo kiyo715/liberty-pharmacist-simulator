@@ -183,6 +183,10 @@ function calculate() {
   out.statusBadge.textContent    = status.label;
   out.resultCard.dataset.status  = status.key;
 
+  // 低め判定時のLINE強調バナー
+  const lowCta = document.getElementById("lowLineCta");
+  if (lowCta) lowCta.classList.toggle("visible", status.key === "low");
+
   /* ── 正社員：年収モード表示 ── */
   if (emp === "regular") {
     const toMan = (h) => Math.round(h * annHours / 10000);   // 時給→万円

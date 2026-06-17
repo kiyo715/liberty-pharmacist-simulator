@@ -470,6 +470,37 @@ input:focus-visible + .check-box {
 }
 .btn-line:hover { background: #05b24c; }
 
+/* ── 低め判定時 LINE強調バナー ── */
+.low-line-cta {
+  display: none;
+  margin: 0 24px 4px;
+  padding: 14px 18px;
+  background: #edfff4;
+  border: 1.5px solid #06c755;
+  border-radius: var(--r-lg);
+  gap: 12px;
+  align-items: center;
+}
+.low-line-cta.visible { display: flex; }
+.low-line-cta-text { flex: 1; }
+.low-line-cta-text strong { display: block; font-size: 13px; color: #065f4b; margin-bottom: 2px; }
+.low-line-cta-text span  { font-size: 12px; color: var(--c-muted); }
+.low-line-cta a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 14px;
+  background: #06c755;
+  color: #fff;
+  border-radius: var(--r-sm);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.low-line-cta a:hover { background: #05b24c; }
+
 /* ── Form footer ── */
 .form-footer {
   display: flex;
